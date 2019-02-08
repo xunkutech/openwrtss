@@ -8,7 +8,7 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=luci-app-dns-forwarder
+PKG_NAME:=openwrt-dist-luci
 PKG_VERSION:=1.6.2
 PKG_RELEASE:=1
 
@@ -34,7 +34,7 @@ define Create/uci-defaults
 	) > $(PKG_BUILD_DIR)/luci-$(1)
 endef
 
-define Package/luci-app-dns-forwarder/Default
+define Package/openwrt-dist-luci/Default
 	SECTION:=luci
 	CATEGORY:=LuCI
 	SUBMENU:=3. Applications
@@ -43,13 +43,13 @@ define Package/luci-app-dns-forwarder/Default
 	DEPENDS:=$(2)
 endef
 
-Package/luci-app-dns-forwarder = $(call Package/luci-app-dns-forwarder/Default,Dns-Forwarder,+dns-forwarder)
+Package/luci-app-dns-forwarder = $(call Package/openwrt-dist-luci/Default,Dns-Forwarder,+dns-forwarder)
 
-define Package/luci-app-dns-forwarder/description
+define Package/openwrt-dist-luci/description
 	LuCI Support for $(1).
 endef
 
-Package/luci-app-dns-forwarder/description = $(call Package/luci-app-dns-forwarder/description,Dns-Forwarder)
+Package/luci-app-dns-forwarder/description = $(call Package/openwrt-dist-luci/description,Dns-Forwarder)
 
 define Build/Prepare
 	$(foreach po,$(wildcard ${CURDIR}/files/luci/i18n/*.po), \
@@ -62,7 +62,7 @@ endef
 define Build/Compile
 endef
 
-define Package/luci-app-dns-forwarder/postinst
+define Package/openwrt-dist-luci/postinst
 #!/bin/sh
 if [ -z "$${IPKG_INSTROOT}" ]; then
 	( . /etc/uci-defaults/luci-$(1) ) && rm -f /etc/uci-defaults/luci-$(1)
@@ -72,17 +72,17 @@ fi
 exit 0
 endef
 
-Package/luci-app-dns-forwarder/postinst = $(call Package/luci-app-dns-forwarder/postinst,dns-forwarder)
+Package/luci-app-dns-forwarder/postinst = $(call Package/openwrt-dist-luci/postinst,dns-forwarder)
 
-define Package/luci-app-dns-forwarder/postrm
+define Package/openwrt-dist-luci/postrm
 #!/bin/sh
 rm -f /tmp/luci-indexcache
 exit 0
 endef
 
-Package/luci-app-dns-forwarder/postrm = $(Package/luci-app-dns-forwarder/postrm)
+Package/luci-app-dns-forwarder/postrm = $(Package/openwrt-dist-luci/postrm)
 
-define Package/luci-app-dns-forwarder/install
+define Package/openwrt-dist-luci/install
 	$(call Create/uci-defaults,$(2))
 	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/controller
 	$(INSTALL_DATA) ./files/luci/controller/$(2).lua $(1)/usr/lib/lua/luci/controller/$(2).lua
@@ -94,6 +94,6 @@ define Package/luci-app-dns-forwarder/install
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/luci-$(2) $(1)/etc/uci-defaults/luci-$(2)
 endef
 
-Package/luci-app-dns-forwarder/install = $(call Package/luci-app-dns-forwarder/install,$(1),dns-forwarder)
+Package/luci-app-dns-forwarder/install = $(call Package/openwrt-dist-luci/install,$(1),dns-forwarder)
 
 $(eval $(call BuildPackage,luci-app-dns-forwarder))
