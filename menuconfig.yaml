@@ -1,0 +1,70 @@
+Kernel type:
+  MIPS FPU Emulator: [*] 
+Global build settings:
+  Compile with support for patented functionality: [*]
+  Kernel build options:
+    Compile the kernel with MIPS FPU Emulator: [*]
+Base system:
+  block-mount: [*] 
+Kernel modules:
+  Filesystems:
+    kmod-fs-exfat: [*]
+    kmod-fs-ext4: [*]
+    kmod-fs-isofs: [*]
+    kmod-fs-vfat: [*]
+  Native Language Support:
+    kmod-nls-cp936: [*]
+    kmod-nls-cp950: [*]
+  Network Support:
+    kmod-tun: [*]
+  Other modules:
+    kmod-sdhci-mt7620: [*]
+  USB Support:
+    kmod-usb-storage: [*]
+    kmod-usb-storage-uas: [*]
+    kmod-usb3: [*]
+Utilities:
+  Compression:
+    xz-utils.xz: [*]
+  Disc:
+    blkid: [*]
+    fdisk: [*]
+    lsblk: [*]
+  Filesystem:
+    e2fsprogs: [*]
+    ntfs-3g: [*]
+  Shell:
+    bash: [*]
+  coreutils.coreutils-base64: [*]
+  usbutils: [*]
+LuCI:
+  Collections:
+    luci: [*]
+  Applications:
+    luci-app-dns-forwarder: [*]
+    luci-app-ipsec-vpnd: [*]
+    luci-app-privoxy: [*]
+    luci-app-samba4: [*]
+    luci-app-shadowsocks-libev: [*]
+    luci-app-upnp: [*]
+Network:
+  Firewall:
+    ip6tables.ip6tables-mod-nat: [*]
+    iptables-mod-conntrack-extra: [*]
+    iptables-mod-filter: [*]
+    iptables-mod-nat-extra: [*]
+  Web Servers/Proxies:
+    shadowsocks-libev-config: [*]
+    shadowsocks-libev-ss-local: [*]
+    shadowsocks-libev-ss-redir: [*]
+    shadowsocks-libev-ss-rules: [*]
+    shadowsocks-libev-ss-server: [*]
+    shadowsocks-libev-ss-tunnel: [*]
+  VPN:
+    strongswan-mod-kernel-libipsec: [*]
+    strongswan-minimal: [*]
+    strongswan-mod-dhcp: [*]
+  ipset-dns: [*]
+Libraries:
+  libcap: [*]
+  libustream-mbedtls: [*]
